@@ -266,7 +266,7 @@ function getNode(address, data) {
 
 var url = 'galleryImages/pictureData.json';
 if(document.location.host.match(/localhost/)) {
-	url = 'admin/public/pictureData.json';
+	url = 'galleryImages/pictureData.json';
 }
 
 $.ajax({
