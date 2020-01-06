@@ -1,0 +1,113 @@
+div.slide {
+	position:fixed;
+	font-family:arial;
+}
+
+.slide .titleBar {
+	display: flex;
+	width:100%;
+	height:44px;
+	padding:4px;
+	background-color:#224433;
+	border-bottom:solid 1px red;
+	position:relative;
+	flex-direction: row;
+	justify-content: flex-start;
+	font-size:12px;
+	font-family:helvetica;
+}
+
+.slide .titleBar .title {
+	height: 25px;
+	max-width:50%;
+	min-width:30%;
+	overflow:hidden;
+
+}
+
+.slide .titleBar .button { 
+	background-color: rgba(068, 136, 102, 0.8); 
+	margin-top:10px; 
+}
+
+.slide .titleBar .button.disabled { 
+	background-color: rgba(245, 255, 245, .6); 
+}
+
+.slide .titleBar .close {
+	cursor:default;
+	width:15px;
+	height:15px;
+	padding:4px;
+	margin-top:-4px;
+	margin-right:1px;
+	margin-left: auto;
+	background-colorX:pink;
+}
+
+.slide .titleBar .button { 
+	height: 16px;
+	width: 25px;
+	display: inline-block;
+	font-size: 10px;
+	cursor: default;
+	margin-left: 1px;
+	font-size: 12px;
+	padding: 4px;
+
+}
+.slide .titleBar .button div { 
+    margin: 5px auto;
+    text-align: center;
+	font-size:7pt;
+	line-height:6px;
+	color: #ccddcc;
+}
+
+
+.slide .titleBar .zoom {
+	text-align:center;
+	position:relative;
+	bottom: -3px;
+}
+.slide .titleBar .zoom .button{
+	text-align:center;
+	position:relative;
+	top: -8px;
+	cursor:pointer;
+}
+.slide .frame {
+	overflow:hidden;
+	background-color:white;
+	/* needed for the IE7 position:relative/overflow:hidden bug */
+	position:relative;
+}
+
+.slide .outerFrame {
+    position: relative;
+	cursor: url(../images/slide/redMoveCursor.png),url(../images/slide/redMoveCursor.png),default;
+
+	/* initial values */
+	widthX: 576px;
+	width: 288px;
+	border:none;
+}
+
+
+.slide canvas {
+	position:relative;
+	cursor: url(../images/slide/redMoveCursor.png),url(../images/slide/redMoveCursor.png),default;
+}
+
+
+
+.slide .topDragHandle {
+    float: left;
+    position: relative;
+	background-color:#FAFAD2;
+	height:35px;
+	width:173px;
+	margin:5px;
+}
+
+
