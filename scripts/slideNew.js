@@ -9,7 +9,7 @@ var  Slide = function(pictureData, slideTray) {
 	//this.scaleFactor = .5;
 	this.scaleFactor;
 	this.moveCounter = 0;
-	if(pictureData.fileSizes && pictureData.fileSizes.lg) { 
+	if(pictureData.fileSizes && pictureData.fileSizes.lg && pictureData.fileSizes.lg === "1") { 
 		this.imageSrc = pictureData.imageDir + 'large/' + pictureData.fileName + ".jpg";
 	}
 	else {
@@ -33,14 +33,14 @@ var  Slide = function(pictureData, slideTray) {
 	this.element.css({left:strPosL,top:strPosT});
 	this.slideTray = slideTray;
 	this.zoomSettings = [1,2,3,4]
-	this.zoomSetting = 1;
+	this.zoomSetting = 2;
 };
 
 Slide.prototype = {
 	
 	init: function($element) {
 		this.setSlideControls();
-		this.setDragTools();
+		//this.setDragTools();
 		this.bringToTop(this.slideTray);
 	},
 
@@ -58,7 +58,7 @@ Slide.prototype = {
 		closeButton.on('click', this.closeSlide.bind(this));
 
 		$element.draggable( {
-			cursor:'move'
+			cursor:'move', containment:"window", opacity: 0.5
 		});
 	},
 	zoom: function(e) {

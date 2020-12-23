@@ -1,5 +1,6 @@
 div.slide {
-	position:absolute;
+	position:fixed;
+	positionX:relative;
 	font-family:arial;
 }
 

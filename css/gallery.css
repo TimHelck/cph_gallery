@@ -30,7 +30,7 @@ html {
 	flex-directionXXX: column; 
 
 }
-
+/*
 #slideTray {
 	width:60%;
 	height:500px;
@@ -95,6 +95,7 @@ html {
     cursor: pointer;
 }
 
+*/
 
 *, *:before, *:after {
   box-sizing: inherit;
@@ -286,6 +287,7 @@ div.related {
 
 
 .cell {
+  padding-top: 20px;
   float: left;
   position: relative;
 }
@@ -612,7 +614,7 @@ div.related {
 }
 
 #galleries .expandable {
-	height:171px;
+	height:151px;
 	margin-bottomX: 20px;
 }
 
