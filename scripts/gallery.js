@@ -16,12 +16,13 @@ function renderGalleries(d) {
 	$('#galleries').html(r);
 	
 	// set sub-gallery link overlay height to match the image
+	/*
 	$.each($(".subGalleryLinkContainer"), function(i, x) {
 		var topAndBottomPadding = 10;
 		var h = $(x).find(".basicImg").height();
 		$(x).find(".galleryTitle").height(h - topAndBottomPadding);
 	});
-
+*/
 	$("#galleries .openSlide").on("click", {d:d}, handleGalleryClick);
 	$("#galleries .getLink").on("click", {d:d}, handleGalleryClick);
 
@@ -121,8 +122,7 @@ function runWhenReady(testFunction, inFunction, defaultFunction, mlsecs, reps) {
 
 
 function handleGalleryClick(e) {
-//console.log("Line 67: ", e);
-//console.log("Line 68: ", e.data);
+//console.log("Line 68: ", e.data.dataaddress);
 	var data = e.data.d;
 	var target = e.target;
 	if(target.className === "openSlide") {
@@ -148,22 +148,6 @@ function openSlide(target, data) {
 	slideTray.loadSlide(data);
 }
 
-function getLink(target) {
-//	var expandable = $(target).closest(".cell").find(".expand")[0] ||  
-//					 $(target).closest(".cell").find(".expandable")[0];
-	window.x = target;				 
-
-//	var routerId = expandable.dataset.routerid;
-	var routerId = ($(target).closest(".cell").find(".expand")[0]     && $(target).closest(".cell").find(".expand")[0].dataset.routerid) ||  
-				   ($(target).closest(".cell").find(".expandable")[0] && $(target).closest(".cell").find(".expandable")[0].dataset.routerid);
-
-	var link = window.location.protocol + "//" + window.location.host + window.location.pathname + "#" + routerId;
-	navigator.clipboard.writeText(link)
-	console.log("Line 65: " + link);
-	//console.log(expandable);
-	//console.log(target);
-}
-
 function renderGallery(level, key, routerId, galleryName, description, d) {
 	var r = "<section class='imageGrid'><div class='title'>" + galleryName + "</div>";
 	if(description) {
@@ -180,7 +164,7 @@ function renderGallery(level, key, routerId, galleryName, description, d) {
 			c +=	"		<div class='expandable' data-dataaddress='" + key + ":" + i + "' data-routerid='" + dataPathName + "'>";
 			c +=	"			<div class='subGalleryLinkContainer'>";
 			c +=	"				<img class='basicImg' src='./galleryImages/thumbnail/" + x.imageFile + ".jpg'>";
-			c +=	"				<div class='galleryTitle'>" + x.title + "</div>";
+			c +=	"				<div class='galleryTitle'><div>Gallery:</div>" + x.title + "</div>";
 			c +=	"			</div>";
 			c +=	"			<div class='arrowUp'></div>";
 			c +=	"		</div>";
@@ -197,17 +181,29 @@ function renderGallery(level, key, routerId, galleryName, description, d) {
 			c +=	"			<div class='arrowUp'></div>";
 			c +=	"		</div>";
 			c +=	"		<div class='expand'>";
-			c +=    "			<div class='leftColumn'>";
+			c +=	"			<div class='leftColumn main' style='width:75%'>";
+			c +=	"				<div class='leftColumnImage'>";
+			c +=	"					<img class='largeImage' src='./galleryImages/display/" + x.imageFile + ".jpg'>";
+			c +=    "				</div>  <!-- leftColumnImage -->";
+
 			c += renderPictureDescription(x);
-			c +=    "			</div>";
-			c +=    "			<div class='leftColumnRelated'></div>";
-			c +=	"			<img class='largeImageMain' src='./galleryImages/display/" + x.imageFile + ".jpg'>";
-			c +=	"			<img class='largeImageRelated' src=''>";
+			c +=    "			</div>   <!-- leftColumn main -->";
+			c +=	"			<div class='leftColumn related' style='width:75%'>";
+			c +=	"				<div class='leftColumnImage related'>";
+			c +=	"					<img class='largeImage' src='./galleryImages/display/" + x.imageFile + ".jpg'>";
+			c +=    "				</div>  <!-- leftColumnImage -->";
+			
+			c +=    "			</div>   <!-- leftColumn related -->";
 			c +=    "			<div class='rightColumn'>";
 			c +=    "				<div class='buttons'>";
-			c +=	"					<img src='./images/openSlide.png' class='openSlide'>";
-			c +=	"					<img src='./images/getLink.png' class='getLink'>";
-			c +=	"					<a class='expandClose'>&times;</a>";
+			c +=    "					<div class='left'>";
+			c +=	"						<span class='tooltip open' data-text='Open image as stand-alone.'><img src='./images/openSlide.png' class='openSlide'></span>";
+			c +=	"						<span class='tooltip link' data-text='Link to this image.'><img src='./images/getLink.png' class='getLink'></span>";
+			c +=    "					</div>";
+			c +=    "					<div class='right'>";
+			//c +=	"						<span class='tooltip close' data-text='Close image.'><a class='expandClose'><img src='./images/close.png' class='openSlide'></a></span>";
+			c +=	"						<span class='tooltip close' data-text='Close image.'><a class='expandClose'><img src='./images/close.png'></a></span>";
+			c +=    "					</div>";
 			c +=    "				</div>";
 			c += renderRelatedPictures(x.relatedPictures || [], key + ':' +i, dataPathName);
 			c +=    "			</div>";
@@ -232,6 +228,7 @@ function renderPictureDescription(d) {
 
 
 function renderRelatedPictures(d, key, routerId) {
+//console.log("Line 226: " + key);
 	var r = "<div class='relatedPictures'>";
 	if(d.length) {
 		r += "<div class='title'>Related Pictures</div>";
@@ -250,12 +247,30 @@ function renderRelatedPictures(d, key, routerId) {
 }
 
 
+function getLink(target) {
+//	var expandable = $(target).closest(".cell").find(".expand")[0] ||  
+//					 $(target).closest(".cell").find(".expandable")[0];
+	window.x = target;				 
+
+//	var routerId = expandable.dataset.routerid;
+	var routerId = ($(target).closest(".cell").find(".expand")[0]     && $(target).closest(".cell").find(".expand")[0].dataset.routerid) ||  
+				   ($(target).closest(".cell").find(".expandable")[0] && $(target).closest(".cell").find(".expandable")[0].dataset.routerid);
+
+	var link = window.location.protocol + "//" + window.location.host + window.location.pathname + "#" + routerId;
+	navigator.clipboard.writeText(link)
+	console.log("Line 65: " + link);
+	//console.log(expandable);
+	//console.log(target);
+}
+
+
 renderGalleries(data);
 
 
 var $cell = $('.cell');
 
 function toggleMainPicture() {
+window.data = data;
   var $thisCell = $(this).closest('.cell');
 	$('body').trigger('restoreMainPictureEvent');
 
@@ -287,7 +302,7 @@ $cell.find('.expandClose').click(function() {
 });
 
 function showRelatedImage(e) {
-console.log(e.target);
+//console.log("Line 299: ", e.target);
 	var routerId;
 	if($(e.target).hasClass("related")){
 		routerId = $(e.target).attr("data-routerid");
@@ -296,30 +311,31 @@ console.log(e.target);
 		var relatedDiv = $(e.target).closest(".related");
 		routerId = $(relatedDiv).attr("data-routerid");
 	}
-console.log("Line 240: " + routerId);
 	
 	var dataAddress = $(this).data('dataaddress');
 	var node = getNode(dataAddress, data.galleries);
 	var relatedImagePath =  './galleryImages/display/' + node.fileName + '.jpg';
 	
 	data.dataaddress.activePicture = dataAddress;
-	var largeImageExpand =  $($($(e.target).parents(".isExpanded")[0]).find(".expand")[0]);
-	var largeImageRelated = largeImageExpand.find('.largeImageRelated');
-	largeImageRelated.attr('src', relatedImagePath);
-	largeImageExpand.addClass('showRelated');
-	largeImageExpand.attr('data-routerid', routerId);
-
-
+	var expand =  $($($(e.target).parents(".isExpanded")[0]).find(".expand")[0]);
+	expand.addClass('showRelated');
+	expand.attr('data-routerid', routerId);
+	
+	var leftColumnRelated = expand.find('.leftColumn.related');
+	var lcr  =	"				<div class='leftColumnImage related'>";
+		lcr +=	"					<img class='largeImage' src='" + relatedImagePath + "'>";
+		lcr +=  "				</div>  <!-- leftColumnImage -->";
+	leftColumnRelated.html(lcr);
+	showRelatedImageDescription(e, dataAddress);
 }
 
-function showRelatedImageDescription(e) {
-	var dataAddress = $(this).data('dataaddress');
+function showRelatedImageDescription(e, dataAddress) {
 	var mainPictureDataAddress = dataAddress.split(':').slice(0,-1).join(':');
 	var node     = getNode(dataAddress, data.galleries);
 	var mainNode = getNode(mainPictureDataAddress, data.galleries);
 	var r = "";
 
-	r +=	"		<div class='related restoreMainPicture' data-dataaddress='" + mainPictureDataAddress + "'>";
+	r +=	"		<div class='restoreMainPicture related' data-dataaddress='" + mainPictureDataAddress + "'>";
 	r +=	"			<img class='basicImg' src='./galleryImages/thumbnail/" + mainNode.fileName + ".jpg'>";
 	r +=	"			<div class='subTitle'>Return to main picture</div>";
 	r +=	"		</div>";
@@ -327,25 +343,22 @@ function showRelatedImageDescription(e) {
 	
 	jQuery.each(['title', 'medium', 'description'], function(i, x) {
 		if(node[x]) {
-			r += "<div class='" + x + "'>" + node[x] + "</div>";
+			r += "<div class='" + x + " related'>" + node[x] + "</div>";
 		}
 	});
 
-	//var largeImageExpand = $($('.isExpanded')[0]).find('.expand');
 	var largeImageExpand =  $($($(e.target).parents(".isExpanded")[0]).find(".expand")[0]);
-	var relatedDescription = largeImageExpand.find('.leftColumnRelated');
-	relatedDescription.html(r);
-	// not needed???
-	//largeImageExpand.addClass('showRelated');
+	
+	
+	var relatedDescription = largeImageExpand.find('.leftColumn.related');
+	relatedDescription.append(r);
 
 
-	//$('.restoreMainPicture').click(function(){$('body').trigger('restoreMainPictureEvent');});
 	$('.restoreMainPicture').click(restoreMainPicture);
 	
 }
 
 $('.relatedPictures .related').click(showRelatedImage);
-$('.relatedPictures .related').click(showRelatedImageDescription);
 
 function restoreMainPicture(e) {
 	var target = e.target;
@@ -361,9 +374,10 @@ function restoreMainPicture(e) {
 
 
 
-// TODO: memoize
+// TODO: memoize ?
 function getNode(address, data) {
-//console.log("Line 233: " + address);
+//console.log("Line 385: " + address);
+//console.log("Line 386: ", data);
 	var aa = address.split(':');  // address array
 	var a = aa[0];  
 	var a = parseInt(a, 10) || a;  
@@ -384,7 +398,8 @@ function getNode(address, data) {
 			fileName:    data[a].imageFile,
 			description: data[a].description   || '',
 			medium:      data[a].medium || '',
-			fileSizes:   data[a].fileSizes || {}
+			fileSizes:   data[a].fileSizes || {},
+			data:        data
 		};
 		return r;
 	}

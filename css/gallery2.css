@@ -11,13 +11,15 @@ https://css-tricks.com/all-about-floats/
 /* *************************************************************************** */
 
 body {
-	background-color: #112411; 
-	color: linen;
+	background-color: #cccccc; 
+	color: #606060;
 	padding:10px;
 }
-A:link {color: #afdcaf;}
-A:visited {color: #90a0b0;}
-A:active {color: khaki;}
+A:link {color: #6666bb;}
+A:visited {color: #5555aa;}
+A:focus {color: #6666dd;}
+A:hover {color: #6666dd;}
+A:active {color: #aa6666;}
 
 body.picture {background-color: #222222; color: khaki;}
 
@@ -30,77 +32,11 @@ html {
 	flex-directionXXX: column; 
 
 }
-/*
-#slideTray {
-	width:60%;
-	height:500px;
-	top: 84px;
-	border:4px #bfd9bf solid;
-	z-index:100000;
-	overflow:hidden;
-	left:20px;
-	position:absolute;
-	//cursor: url(../images/slide/blueMoveCursor.png),url(../images/slide/blueMoveCursor.png),default;
-}
 
-#slideTray.hidden {
-	visibility:hidden;
-}
-
-#slideTray.small {
-	width:70%;
-	height:500px;
-}
-
-#slideTray.min {
-	width:20%;
-	height:50px;
-	position:absolute;
-	top: auto;
-	bottom:10px;
-	left: auto;
-	right:10px;
-}
-
-#slideTray.full {
-	width:98%;
-	height:1500px;
-}
-
-#slideTray > .titleBar {
-	background-color: #446655;
-	height:30px;
-	top:0px;
-	position:relative;
-}
-
-#slideTray > .container {
-
-	background-color: rgba(136,153,119,0.75);
-	top:0;
-	bottomX:20px;
-	height:100%;
-	width:100%;
-	overflow:hidden;
-	position:relative;
-}
-
-
-#slideTray .titleBar .btn{
-	position:relative;
-	top:5px;
-	rightX:5px;
-	float: right;
-	margin-right: 20px;
-    cursor: pointer;
-}
-
-*/
 
 *, *:before, *:after {
   box-sizing: inherit;
 }
-
 .topMenu2,
 .topMenu {
 	margin: 0;
@@ -119,21 +55,25 @@ html {
 .topMenu li a {
 	text-decoration: none;
 	padding: .2em 1em;
-	color: linen;
+	color: #606060;
 	display: inline-block;
-	background-color: darkseagreen;
+	background-color: #efe;
 	font-family:helvetica; 
+	border: 1px solid #606060;
 }
 .topMenu2 li a {
 	color: #333333;
 	background-color: #ffdddd;
 	width:80px;
 	padding: .2em .5em;
+	font-size:14px;
 }
 .topMenu2 {
 	top: -14px;
 	left:20px;
 }
+
+
 #picture {
 	float:left;
 }
@@ -234,7 +174,10 @@ div.related {
 }
 
 #galleries .imageGrid {
-	background-color: #224433;
+	background-color: #dde;
+}
+#galleries .imageGrid .imageGrid{
+    border: 1px solid #a59a94;
 }
 
 #galleries .imageGrid .title {
@@ -244,8 +187,19 @@ div.related {
 	letter-spacing:.1em;
 	display: block;
   	text-align: center;
-	background-color: #446655;
+	background-colorX: #fff1e9;
+	borderX: 1px solid #606060;
+	background-colorX: #f5f0e8;
+    background-color: #eae0d8;
+    border: 1px solid #a59a94;
 }
+
+#galleries .imageGrid .imageGrid .title {
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
+
 #galleries .imageGrid .leftColumnRelated .restoreMainPicture {
   	background-color:grey;
 	text-align: center;
@@ -288,22 +242,40 @@ div.related {
 	font-family:helvetica; 
 	display: block;
   	text-align: center;
-	background-color: darkseagreen;
+	background-color: #eae5e1;
+	border-bottom: 1px solid #a59a94;
+	border-left: 1px solid #a59a94;
+	border-right: 1px solid #a59a94;
+	border-top: none;
+}
+
+#galleries .imageGrid .imageGrid .galleryDescription {
+	border-bottom: 1px solid #a59a94;
+    border-top: none;
+    border-left: none;
+    border-right: none;
 }
 
 #galleries .imageGrid .imageGrid{
-	background-color: #446655;
+	background-color: #eaeaea;
 }
 
 #galleries .imageGrid .imageGrid .imageGrid{
-	background-color: #668877;
+	background-color: #e0e0e0;
 }
 
-#galleries  .imageGrid  .imageGrid  .imageGrid  .title {
-	background-color: #88aa99;
+#galleries  .imageGrid  .imageGrid  .imageGrid > .title {
+	background-color: #eae5e1;
 }
 
 
+#galleries .imageGrid .imageGrid .imageGrid .imageGrid{
+	background-color: #d6d6d6;
+}
+
+#galleries  .imageGrid  .imageGrid  .imageGrid .imageGrid > .title {
+	background-color: #ddeeff;
+}
 
 
 
@@ -332,7 +304,7 @@ div.related {
 
 .cell.isExpanded > .expandable > .arrowUp {
   display: block;
-  border-bottom: 8px solid darkseagreen;
+  border-bottom: 8px solid #cccccc;
   border-left: 8px solid transparent;
   border-right: 8px solid transparent;
   height: 0;
@@ -349,13 +321,13 @@ div.related {
 	font-weight:bold; 
 	font-family:helvetica; 
 	letter-spacing:.1em;
-	background: rgba(100, 0, 0, 0.3);
+	background: rgba(0, 50, 100, 0.3);
 	text-align:center;
 	margin:0 auto;
 	position:absolute;
 	top: 0;
 }
-.galleryTitle:before {
+.galleryTitleX:before {
    content: "Gallery: ";
 }
 
@@ -365,7 +337,7 @@ div.related {
   padding: 0;
   box-sizing: content-box;
   overflow: hidden;
-  background: #112411;
+  background: #cccccc;
   max-height: 0;
   transition: max-height .3s ease-in-out,
               margin-bottom .1s .2s;
@@ -374,7 +346,6 @@ div.related {
   align-items:flex-start;
 }
 
-/* ********** Tool Tip Styles ********** */
 /* https://blog.logrocket.com/creating-beautiful-tooltips-with-only-css/ */
 
 .tooltip {
@@ -424,226 +395,6 @@ div.related {
   visibility:visible;
 }
 
-/* ********** End Tool Tip Styles ********** */
-
-/* *************************************************************************** */
-/* *************************************************************************** */
-/* ****************************** iPhone 5 *********************************** */
-/* *************************************************************************** */
-/* *************************************************************************** */
-
-
-@media only screen 
-  and (min-device-width: 320px) 
-  and (max-device-width: 568px)
-  and (-webkit-min-device-pixel-ratio: 2) {
-
-	.topMenu li a {
-		height:10px;
-		width:100px;
-
-	}  
-
-.cell {
-	width:29%;
-	margin: 0 5px;
-}
-
-.basicImg {
-  max-height: 70px;
-}
-
-#masthead > div { float: left; margin-bottom:10px; }
-#masthead .title {font-size: 55px; color:darkseagreen; display:block; width:300px; }
-#mastheadXXX .subTitle {font-size: 35px; color:darkseagreen; margin-left:50px;}
-
-.topMenu {
-	display:block;
-}
-
-.topMenu li a {
-	height:23px;
-	width:70px;
-	padding:3px 3px 3px 3px;
-	font-size:14px;
-}
-
-.topMenu li a:hover {
-	color: #fff;
-	background-color:  darkseagreen;
-}
-
-#picture {
-	width:576px;
-	height:800px;
-}
-
-#galleries .expandable {
-	height: 80px;
-	margin-bottom: 5px;
-}
-
-#galleries .relatedPictures > .title {
-	margin: 10px;
-}
-
-div.related {
-	margin: 10px;
-}
-
-#galleries .leftColumn,
-#galleries .leftColumnRelated {
-	padding: 10px;
-}
-
-#galleries .leftColumn .related,
-#galleries .leftColumnRelated .relatedImage {
-	padding: 10px;
-}
-
-#galleries .expandClose {
-  font-size: 35px;
-  line-height: 35px;
-  width:30px;
-}
-
-.largeImage {
-  padding: 10px;
-}
-
-.imageGrid {
-	padding: 20px 5px 0;
-}
-
-#galleries .imageGrid {
-	max-width: 300px;
-	background-color: #224433;
-	margin-bottom: 10px;
-}
-
-#galleries .imageGrid > .title {
-	top: -20px;
-}
-
-#galleries .imageGrid .title {
-	font-size: 25px; 
-	letter-spacing:.1em;
-	padding:2px;
-}
-#galleries .imageGrid .leftColumnRelated .restoreMainPicture {
-	font-size: 15px;
-	margin: 5px 55px 25px;
-}
-
-
-
-#galleries .imageGrid .leftColumn .title, 
-#galleries .imageGrid .leftColumnRelated .title, 
-#galleries .imageGrid .rightColumn .title {
-	font-size: 12px;
-}
-
-#galleries .imageGrid .leftColumnRelated .title { 
-    padding-top: 5px;
-}
-
-#galleries .imageGrid .leftColumnRelated .subTitle { 
-    padding-top: 5px;
-}
-
-#galleries .imageGrid .rightColumn .related .title {
-	font-size: 10px;
-}
-
-#galleries .imageGrid .leftColumn .medium,
-#galleries .imageGrid .leftColumnRelated .medium { 
-	font-size: 10px;
-	margin: 5px 0px;
-}
-
-#galleries .imageGrid .leftColumn .description, 
-#galleries .imageGrid .leftColumnRelated .description { 
-	font-size: 10px;
-	margin: 5px 0px;
-}
-
-#galleries .imageGrid .galleryDescription {
-	top: -20px;
-	font-size: 15px; 
-	padding:5px;
-}
-
-#galleries .imageGrid .imageGrid{
-	max-width: 1280px;
-}
-
-
-#galleries .imageGrid .imageGrid .imageGrid{
-	max-width: 1250px;
-	max-widthX: 604px;
-}
-
-
-
-.gallery,
-.image {
-  padding: 0 5px;
-  margin: 5px 0;
-  height:160px;
-}
-
-
-
-.cell.isCollapsed .arrowUp {
-  height: 10px;
-}
-
-
-.galleryTitle {
-	font-size: 18px; 
-	width:144px;
-	height: 112px;
-	padding:5px;
-}
-
-.cell.isExpanded > .expand {
-  max-height: 270px;
-  margin-bottom: 10px;
-}
-
-.expand {
-  left: -90px;
-}
-.imageGrid .expand {
-	width: 275px;
-	widthX: 644px;
-}
-.imageGrid .imageGrid .expand {
-	width: 1170px;
-	widthX: 614px;
-}
-.imageGrid .imageGrid .imageGrid .expand {
-	width: 1140px;
-	widthX: 584px;
-}
-
-.cell:nth-of-type(3n+1) .expand { margin-left: 9%; }
-.cell:nth-of-type(3n+2) .expand { margin-left: -91%; } 
-.cell:nth-of-type(3n+3) { clear: left; } 
-
-.expand .cell:nth-of-type(3n+1) .expand { margin-left: 6%; } 
-.expand .cell:nth-of-type(3n+2) .expand { margin-left: -94%; } 
-.expand .cell:nth-of-type(3n+3) { clear: left; } 
-
-.expand .expand .cell:nth-of-type(3n+1) .expand { margin-left: 6%; } 
-.expand .expand .cell:nth-of-type(3n+2) .expand { margin-left: -94%; } 
-.expand .expand .cell:nth-of-type(3n+3) { clear: left; } 
-
-
-
-}
-
-
 /* *************************************************************************** */
 /* *************************************************************************** */
 /* ********************************** Desktop ******************************** */
@@ -658,8 +409,7 @@ div.related {
 
 
 #masthead > div { float: left; margin-bottom:10px; }
-#masthead .title {font-size: 55px; color:darkseagreen; display:inline-block; width:300px; }
-#mastheadXXX .subTitle {font-size: 35px; color:darkseagreen; margin-left:50px;}
+#masthead .title {font-size: 55px; color:#333333; display:inline-block; width:300px; }
 
 .topMenu {
 	top:-14px;
@@ -672,8 +422,8 @@ div.related {
 }
 
 .topMenu li a:hover {
-	color: #fff;
-	background-color:  darkseagreen;
+	color: #303030;
+	background-color:  #dfd;
 }
 
 #picture {
@@ -731,12 +481,12 @@ div.related {
 }
 
 .imageGrid {
-	padding: 20px 5px 0;
+	padding: 20px 0 0;
 }
 
 #galleries .imageGrid {
 	max-width: 1310px;
-	background-color: #224433;
+	background-color: #f6f6f6;
 }
 
 #galleries .imageGrid > .title {
@@ -780,27 +530,36 @@ div.related {
 }
 
 #galleries .imageGrid .leftColumn .title, 
-#galleries .imageGrid .leftColumnRelated .title, 
-#galleries .imageGrid .rightColumn .title {
+#galleries .imageGrid .leftColumnRelated .title {
 	font-size: 20px;
+	width:25%;
+	border:none;
 }
 
 #galleries .imageGrid .leftColumnRelated .title { 
     padding-top: 15px;
+	border:none;
 }
 
 #galleries .imageGrid .leftColumnRelated .subTitle { 
     padding-top: 5px;
+	border:none;
 }
 
-#galleries .imageGrid .rightColumn .related .title {
-	font-size: 15px;
+#galleries .imageGrid .rightColumn .relatedPictures > .title {
+	font-size:20px;
+}
+
+#galleries .imageGrid .rightColumn .title {
+	font-size:15px;
+	border:none;
 }
 
 #galleries .imageGrid .leftColumn .medium,
 #galleries .imageGrid .leftColumnRelated .medium { 
 	font-size: 20px;
 	margin: 20px 10px;
+	width:25%;
 }
 
 #galleries .imageGrid .leftColumn .description, 
@@ -827,7 +586,7 @@ div.related {
 }
 
 .quote, .blockQuote, i{
-	font-style:italic;
+	font-styleX:italic;
 	font-family: georgia;
 }
 
@@ -860,7 +619,8 @@ div.related {
 .galleryTitle {
 	font-size: 18px; 
 	width:144px;
-	height: 112px;
+	heightX: 112px;
+	height: 100%;
 	padding:5px;
 }
 

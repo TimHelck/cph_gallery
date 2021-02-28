@@ -2,14 +2,24 @@
 <head>
 	<title>Peter Helck</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" href="css/gallery.css"/>
-	<link rel="stylesheet" type="text/css" href="css/slide.css"/>
+	<XX rel="stylesheet" type="text/css" href="css/gallery2.css"/>
+	<link rel="stylesheet" type="text/css" href="css/slide2.css"/>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 	
 	<!-- <script src="scripts/jquery-1.12.3.js"></script> -->
 	<!-- <script src="scripts/jquery-ui.1.12.1.js"></script> -->
+<script>	
+	var cCss = document.location.search.match(/css=([^&]*)/); 
+	cCss = cCss ? cCss[1] : '';
+	var newLink  = document.createElement('link');
+	newLink.href = 'css/gallery' + cCss + '.css';
+	newLink.rel  = 'stylesheet';
+	newLink.type = 'text/css';
 
+	document.body.appendChild(newLink);
+
+</script>
 
 </head>
 <body>
@@ -23,9 +33,12 @@
 				<li><a href="">Home</a></li>
 				<li><a href="">Gallery</a></li>
 				<li><a href="">Memoirs</a></li>
-				<li><a href="">Links</a></li>
 			</ul>
-		
+			<ul class="topMenu2">
+				<li><a href="gallery.html">green</a></li>
+				<li><a href="gallery.html?css=2">grey</a></li>
+				<li><a href="gallery.html?css=3">not done</a></li>
+			</ul>
 		</div>
 	</div>
 	<div id="shell">		
